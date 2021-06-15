@@ -63,7 +63,7 @@ export default class Data extends Component {
               {Data.map((item, index) => (
                 <tr key={item.mal_id}>
                   <td data-label="Cover">
-                    <img src={item.image_url} alt="url" />
+                    <img src={item.image_url} alt="url" className="cover" />
                   </td>
                   <td data-label="Title">{item.title}</td>
                   <td data-label="Episodes">{item.episodes}</td>
