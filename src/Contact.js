@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React, { useState } from "react";
 import Header from "./Components/Header";
 import InputBox from "./Components/InputBox";

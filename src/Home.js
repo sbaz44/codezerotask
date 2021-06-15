@@ -11,7 +11,6 @@ import emirate from "./assests/emirate.png";
 import ibm from "./assests/ibm.png";
 import intel from "./assests/intel.png";
 import master from "./assests/master.png";
-import microsoft from "./assests/microsoft.png";
 import w1 from "./assests/w1.jpg";
 import Button from "./Components/Button";
 import Footer from "./Components/Footer";
@@ -90,7 +89,7 @@ export default class Home extends Component {
 
         <div className="resource">
           <div className="card">
-            <img src={w1} />
+            <img src={w1} alt="resource" />
             <div className="form">
               <input type="text" placeholder="Name" />
               <input type="email" placeholder="Email" />
