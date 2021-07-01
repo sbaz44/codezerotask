@@ -8,7 +8,7 @@
 *.map
 # testing
 /coverage
-
+*.rar
 # production
 /build
 
