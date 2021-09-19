@@ -14,7 +14,19 @@ import master from "./assests/master.png";
 import w1 from "./assests/w1.jpg";
 import Button from "./Components/Button";
 import Footer from "./Components/Footer";
+import axios from "axios";
 export default class Home extends Component {
+  state = {
+    data: [],
+  };
+  getData = async () => {
+    const res = await axios.get("https://jsonplaceholder.typicode.com/posts");
+    console.log(res.data);
+    this.setState({ data: res.data });
+  };
+  componentDidMount() {
+    this.getData();
+  }
   render() {
     const Feature = (data) => {
       return (
@@ -38,7 +50,7 @@ export default class Home extends Component {
       );
     };
     return (
-      <div className="home-container">
+      <div className="home-container" data-test="homeComponent">
         <Header />
         <div className="slide">
           <div className="info">
