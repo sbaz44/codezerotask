@@ -9,11 +9,14 @@ export default class Data extends Component {
     Data: [],
     isLoading: false,
     LastPage: 0,
+    query: "Naruto",
   };
   getData = async () => {
     this.setState({ isLoading: true });
     let res = await fetch(
-      "https://api.jikan.moe/v3/search/anime?q=Naruto&page=" +
+      "https://api.jikan.moe/v3/search/anime?q=" +
+        this.state.query +
+        "&page=" +
         currentPage +
         "&limit=10"
     );
@@ -40,16 +43,34 @@ export default class Data extends Component {
   componentDidMount() {
     this.getData();
   }
+  onSubmit = (e) => {
+    this.setState({ query: e.target.value }, () => this.getData());
+  };
   render() {
     const { TableHeader, Data, LastPage, isLoading } = this.state;
     return (
-      <div className="data-container">
+      <div className="data-container" data-test="dataComponent">
         <Header />
         {isLoading ? (
-          <p className="loading">Loading....Please Wait</p>
+          <p className="loading" data-testid="loadingComponent">
+            Loading ....Please Wait
+          </p>
         ) : (
-          <table>
+          <table data-test="tableComponent">
             <caption>Anime Data</caption>
+            <caption>
+              <input
+                type="search"
+                data-testid="searchh"
+                placeholder="search"
+                defaultValue={this.state.query}
+                onKeyPress={(e) => {
+                  if (e.code === "Enter") {
+                    this.onSubmit(e);
+                  }
+                }}
+              />
+            </caption>
             <thead>
               <tr>
                 {TableHeader.map((item, index) => (
